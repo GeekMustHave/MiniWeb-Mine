@@ -1,0 +1,94 @@
+= MiniWeb Web Server+++<br>+++GeekMustHave
+John Schuster <John.schuster@PhoenixWorkgrpup.com>
+v2.1b, 10/03/2018: GIT Notes
+:Author: John HR Schuster
+:Company: GeekMustHave
+:toc: left
+:toclevels: 4:
+:imagesdir: ./images
+:pagenums:
+:experimental:
+:source-hightlighter: pygments
+:icons: font
+:docdir: */documents
+:github: Github repository
+:linkattrs:
+:seclinks:
+:title-logo-image: ./images/GMH-ASCIIDoctor-TitleLogo.png
+
+MiniWeb is a high-efficiency, cross-platform, small-footprint HTTP server implementation in C language. 
+It implements GET and POST methods and works on multiple platforms ranging from server, desktop, game console and IoT hardware.
+This document has the configuration setup and Powershell scripts to make this easy to use.
+
+MiniWeb is an embeddable, cross-platform, small-footprint HTTP server implementation, implementing basic GET and POST requests as well as request handling dynamic content generating. It works on x86 (Windows/Linux), ARM, MIPS and any posix platforms, either embedded or standalone.
+
+== Location
+
+This project is located in the `x:\myCommands\MiniWeb` folder.
+
+A copy of the one file required `miniweb.exe` is also in the `x:\myCommand` folder to allow it to be run from anywhere
+
+== Features
+
+* small footprint HTTP server written in pure C language
+* 
+* GET & POST actions with basic HTTP authentication
+* easy-to-extend with URL handler callbacks
+* cross-platform and scalable
+* serial port access via HTTP
+* integrated UDP server interacting with HTTP server
+
+<<<<
+
+== Setup arguments
+
+.Miniweb Setup arguments
+----
+MiniWeb (built on May 30 2017)
+(C)2005-2013 Written by Stanley Huang <stanleyhuangyc@gmail.com>
+
+Usage: miniweb  -h  : display this help screen
+        -v  : log status/error info
+        -p  : specifiy http port [default 80]
+        -i  : specifiy IP address of network interface to bind to [default 0]
+        -r  : specify http document directory [default htdocs]
+        -l  : specify log file
+        -m  : specifiy max clients [default 32]
+        -M  : specifiy max clients per IP
+        -s  : specifiy download speed limit in KB/s [default: none]
+        -n  : disallow multi-part download [default: allow]
+        -d  : disallow directory listing [default ON]d:
+
+----
+
+== Powershell anywhere
+
+We might want to start this small HTTP server from any directory.
+Putting the Miniweb.exe in a path would require you to pass the proper arguments to it as well.
+This is not that simple.
+
+If we create a Powershell script like `start-http.ps1` with the MiniWeb and arguments you woudl still have to type the path to the PS1 file.  This is better but, still not simple enough.
+
+=== Profiles
+
+You can create a Windows PowerShell profile and add the aliases, functions, and variables to the profiles. 
+The profile is loaded every time that Windows PowerShell starts.
+
+To load a profile, your Windows PowerShell execution policy must permit you to load configuration files. 
+If it does not, the attempt to load the profile fails and Windows PowerShell displays an error message.
+
+Reference: https://msdn.microsoft.com/en-us/library/bb613488%28VS.85,loband%29.aspx[Powershell Everywhere]
+
+Where the hell did Microsoft put my profile for Powershell?
+
+.Where is Powersell Profile file
+[source,Powershell]
+----
+PS C:\myCommands\miniweb> $profile <1>
+C:\Users\jschust2\Documents\WindowsPowerShell\Microsoft.VSCode_profile.ps1
+----
+<1> Type this in to display profile file name
+
+Typically it is just an empty file.
+
+
